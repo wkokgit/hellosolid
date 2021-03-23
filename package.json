@@ -1,0 +1,22 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "An extension of the hello world project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wkokgit/helloworld.git"
+  },
+  "author": "Wouter Kok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wkokgit/helloworld/issues"
+  },
+  "homepage": "https://github.com/wkokgit/helloworld#readme",
+  "dependencies": {
+    "rdflib": "^2.2.0"
+  }
+}
