@@ -27,24 +27,31 @@ window.onload = function() {
     const fetcher = new $rdf.Fetcher(store);
 
     // // Load the person's data into the store
-    // const person = $('#profile').val();
-    // await fetcher.load(person);
+    const person = $('#profile').val();
+    console.log(person)
+    await fetcher.load(person);
+    // Display their details
+    const fullName = store.any($rdf.sym(person), FOAF('name'));
+    $('#fullName').text(fullName && fullName.value);
 
-    // // Display their details
-    // const fullName = store.any($rdf.sym(person), FOAF('name'));
-    // $('#fullName').text(fullName && fullName.value);
+    // Display their friends
+    const friends = store.each($rdf.sym(person), FOAF('knows'));
+    console.log("YOUR FRIENDS: ")
+    console.log(friends)
 
-    // // Display their friends
-    // const friends = store.each($rdf.sym(person), FOAF('knows'));
-    // $('#friends').empty();
-    // friends.forEach(async (friend) => {
-    //   await fetcher.load(friend);
-    //   const fullName = store.any(friend, FOAF('name'));
-    //   $('#friends').append(
-    //     $('<li>').append(
-    //       $('<a>').text(fullName && fullName.value || friend.value)
-    //               .click(() => $('#profile').val(friend.value))
-    //               .click(loadProfile)));
-    // });
+    if(friends.length == 0) {
+      $('#friends').text("You have no friends :(");
+    } else {
+      $('#friends').empty();
+      friends.forEach(async (friend) => {
+        await fetcher.load(friend);
+        const fullName = store.any(friend, FOAF('name'));
+        $('#friends').append(
+          $('<li>').append(
+            $('<a>').text(fullName && fullName.value || friend.value)
+                    .click(() => $('#profile').val(friend.value))
+                    .click(loadProfile)));
+      });
+    }
   });
 }
