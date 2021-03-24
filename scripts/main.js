@@ -1,6 +1,5 @@
 window.onload = function() {
   
-  const $rdf = require(‘rdflib’)
   const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 
   // Log the user in and out on click
