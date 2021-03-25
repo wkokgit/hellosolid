@@ -16,11 +16,14 @@ window.onload = function() {
       $('#user').text(session.webId);
       // Use the user's WebID as default profile
       if (!$('#profile').val())
+
+        $('#profile').text(session.webId);
         $('#profile').val(session.webId);
+      loadProfile();
     }
   });
 
-  $('#view').click(async function loadProfile() {
+  async function loadProfile() {
     console.log("VIEW")
     // Set up a local data store and associated data fetcher
     const store = $rdf.graph();
@@ -32,8 +35,10 @@ window.onload = function() {
     await fetcher.load(person);
     // Display their details
     const fullName = store.any($rdf.sym(person), FOAF('name'));
+    const nickname = store.any($rdf.sym(person), FOAF('nick'));
     $('#fullName').text(fullName && fullName.value);
-
+    $('#full').val(fullName && fullName.value);
+    $('#nick').val(nickname && nickname.value);
     // Display their friends
     const friends = store.each($rdf.sym(person), FOAF('knows'));
     console.log("YOUR FRIENDS: ")
@@ -53,5 +58,29 @@ window.onload = function() {
                     .click(loadProfile)));
       });
     }
+  }
+
+  $('#updateName').click(async function setNameAndNicknames() {
+  const store = $rdf.graph();
+  const fetcher = new $rdf.Fetcher(store, {});
+  const person = $('#profile').val();
+  const fullName = $('#full').val();
+  await fetcher.load(person);
+  const me = $rdf.sym(person);
+  const updater = new $rdf.UpdateManager(store);
+  const updatePromise = new Promise((resolve) => {
+    const deletions = store.statementsMatching(me, $rdf.sym('http://xmlns.com/foaf/0.1/name'), null, me.doc());
+    const additions = $rdf.st(me, $rdf.sym('http://xmlns.com/foaf/0.1/name'), new $rdf.Literal(fullName), me.doc());
+    updater.update(deletions, additions, resolve);
   });
+  await updatePromise;
+
+  // const updatePromise2 = new Promise((resolve) => {
+  //   const deletions = store.statementsMatching(me, $rdf.sym('http://xmlns.com/foaf/0.1/nick'), null, me.doc());
+  //   const additions = nicknames.map(nickname => st(me, $rdf.sym('http://xmlns.com/foaf/0.1/nick'), new $rdf.Literal(nickname), me.doc()));
+  //   updater.update(deletions, additions, resolve);
+  // });
+  // await updatePromise;
+})
+
 }

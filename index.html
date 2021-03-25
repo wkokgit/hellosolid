@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Join Solid</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link href="images/favicon.png" rel="icon" type="image/x-icon" />
     <script src="scripts/solid-auth-client.bundle.js"></script>
     <script src="scripts/rdflib.min.js"></script>
@@ -12,12 +13,12 @@
     <script src="scripts/main.js"></script>
   </head>
   <body>    
+      </h1>
     
   <section class="section">
     <div class="container">
       <h1 class="title">
         Welcome to Solid!
-      </h1>
 
       <section id="welcome">
         <hr>
@@ -33,15 +34,25 @@
       
       <section id="logout-section" style="display:none">
         <hr>
-        <button id="view" class="button button is-info is-rounded">View</button>
-        <a id="user" target="_blank" href="#"></a>
-        <a id="profile" target="_blank" href="#"></a>
+          Profile: <a id="profile" target="_blank" href="#"></a>
         <hr>
-        <a id="fullName"></a>
+          Name: <a id="fullName"></a>
         <hr>
-        <a id="friends"></a>
+          Friends: <a id="friends"></a>
         <hr>
-        <button id="logout" class="button button is-info is-rounded">Log out</button>        
+
+        <div>
+          Name : <input type="textbox" id="full"></input>
+        </div>
+
+        <div>
+          Nickname : <input type="textbox" id="nickname"></input>
+        </div>
+        
+        <button id="updateName" class="button button is-info is-rounded">Update</button>
+
+        <button id="logout" class="button button is-info is-rounded">Log out</button>
+
       </section>
       
     </div>
