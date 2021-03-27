@@ -1,4 +1,4 @@
-
+@import "bulma.min.css"
 
 body, input, button {
   font: 11pt/1.3 "Helvetiva Neue", Helvetica, Arial, sans-serif;
@@ -30,6 +30,6 @@ a:hover {
   color: #9b79fc;
 }
 
-h1 {
-  font-size: 1.5rem !important;
+.section.console-box {
+  padding: 3rem 0rem;
 }

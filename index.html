@@ -6,58 +6,96 @@
     <title>Join Solid</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png"/>
     <script src="scripts/solid-auth-client.bundle.js"></script>
     <script src="scripts/rdflib.min.js"></script>
+    <script src="scripts/solid-query-ldflex.bundle.js"></script>
     <script src="scripts/jquery.js"></script>
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
   </head>
   <body>    
-      </h1>
-    
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Welcome to Solid!
+    <section class="section">
+        <h2 class="title is-2">
+          Welcome to Solid!
+        </h2>
+        <hr>
+        <section class="section" id="welcome">
+          <div class="columns">
+            <div class="column">
+              <div class="box">
+                <h5 class="subtitle is-5">Login with your Solid Pod</h5>
 
-      <section id="welcome">
-        <hr>
-        Do you have a Solid Pod?
-        <hr>
-        <button id="login" class="button button is-info is-rounded">Log in</button>
-        <hr>
-        No, choose from the list of Pod Providers!
-        <hr>
-        <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank" class="button button is-info is-rounded">I Want a Solid Pod!</a>
-        <hr>
-      </section>
-      
-      <section id="logout-section" style="display:none">
-        <hr>
-          Profile: <a id="profile" target="_blank" href="#"></a>
-        <hr>
-          Name: <a id="fullName"></a>
-        <hr>
-          Friends: <a id="friends"></a>
-        <hr>
+                <button id="login" class="button is-primary">
+                <span>Log in</span>
+                </button>
+              </div>
+            </div>
 
-        <div>
-          Name : <input type="textbox" id="full"></input>
-        </div>
+            <div class="column">
+              <div class="box">
+                <h5 class="subtitle is-5">Create a Pod with one of the Pod Providers</h5>
+                <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button is-link">
+                <span>I Want a Solid Pod!</span>
+                </button></a>
+              </div>
+            </div>
 
-        <div>
-          Nickname : <input type="textbox" id="nickname"></input>
-        </div>
+          </div>
+
+        </section>
         
-        <button id="updateName" class="button button is-info is-rounded">Update</button>
+        <section id="logout-section" style="display:none">
+          
 
-        <button id="logout" class="button button is-info is-rounded">Log out</button>
+          <div class="columns">
+            <div class="column">
+              <div class="box">
+                <h4 class="title is-4">
+                Profile information
+                </h4>
 
-      </section>
-      
-    </div>
-  </section>
+                <hr>
+                  Profile link: <a id="profile" target="_blank" href="#"></a>
+                <hr>
+                  Name: <a id="fullName"></a>
+                <hr>
+                  Friends: <a id="friends"></a>
+              </div>
+            </div>
 
-  
+            <div class="column">
+              <div class="box">
+                <h4 class="title is-4">
+                Update your name and nickname
+                </h4>
+                <hr>
+                <div class="block">
+                  <input class="input" type="text" id="full" placeholder="Fullname"></input>
+                </div>
+
+                <div class="block">
+                  <input class="input" type="text" id="nickname" placeholder="Nickname"></input>
+                </div>
+                
+                <button id="updateName" class="button is-info">Update</button>
+
+                <button id="logout" class="button is-info">Log out</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        
+        <div class="section console-box">
+          <div class="box">
+            <h4 class="title is-4 has-text-info">
+              Console log
+            </h4>
+            <div id="error-log"></div>
+          </div>
+        </div>
+
+
+    </section>
   </body>
 </html>

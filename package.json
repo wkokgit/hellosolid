@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/wkokgit/helloworld#readme",
   "dependencies": {
-    "rdflib": "^2.2.0"
+    "rdflib": "^2.2.0",
+    "solid-auth-client": "^2.5.5"
   }
 }
