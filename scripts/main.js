@@ -1,5 +1,3 @@
-//import data from "/scripts/solid-query-ldflex.bundle.js";
-
 window.onload = function() {
 
 //   console.error = console.debug = console.info =  console.log = (function (old_function, div_log) { 
@@ -100,7 +98,7 @@ window.onload = function() {
   $('#updateName').click(async function setNameAndNicknames() {
       const webId = $('#profile').val();
       const person = solid.data[webId];
-      console.log(await person);
+      const fulln = await person['http://xmlns.com/foaf/0.1/name'];
       await person['http://xmlns.com/foaf/0.1/name'].set($('#full').val());
   })
 
