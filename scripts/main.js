@@ -36,7 +36,7 @@ window.onload = function() {
     // Set up a local data store and associated data fetcher
     const store = $rdf.graph();
     const fetcher = new $rdf.Fetcher(store);
-
+    
     // // Load the person's data into the store
     const person = $('#profile').val();
     console.log(person)
@@ -96,10 +96,14 @@ window.onload = function() {
 // })
 
   $('#updateName').click(async function setNameAndNicknames() {
+      console.log("Updating name...");
       const webId = $('#profile').val();
       const person = solid.data[webId];
       const fulln = await person['http://xmlns.com/foaf/0.1/name'];
+      // Make sure your user has localhost as trusted application
       await person['http://xmlns.com/foaf/0.1/name'].set($('#full').val());
+      console.log("Name updated");
+      loadProfile()
   })
 
 }
