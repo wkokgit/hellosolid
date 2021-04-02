@@ -8,7 +8,7 @@ window.onload = function() {
 // } (console.log.bind(console), document.getElementById("error-log")));
 
   const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
-
+  const n = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
   // Log the user in and out on click
   const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html';
   $('#login').click(() => solid.auth.popupLogin({ popupUri }));
@@ -42,12 +42,21 @@ window.onload = function() {
     console.log(person)
     await fetcher.load(person);
     // Display their details
-    const fullName = store.any($rdf.sym(person), FOAF('name'));
+    const fullName = store.any($rdf.sym(person), n('fn'));
+
     const nickname = store.any($rdf.sym(person), FOAF('nick'));
+    const role = store.any($rdf.sym(person), n('role'));
+
+    // The mail is stored in the user ID as a value and starts with mailto:YOURMAIL
+    const personId = store.any($rdf.sym(person), n('hasEmail'));
+    const mail = store.any($rdf.sym(personId), n('value')).value.slice(7);
+
     $('#fullName').text(fullName && fullName.value);
-    $('#full').val(fullName && fullName.value);
-    $('#nick').val(nickname && nickname.value);
-    // Display their friends
+    $('#mail').text(mail);
+    $('#role').text(role && role.value);
+    $('#role-input').val(role && role.value);
+    $('#fullName-input').val(fullName && fullName.value);
+    // Display their friends 
     const friends = store.each($rdf.sym(person), FOAF('knows'));
 
     console.log("Loading friends...")
@@ -57,7 +66,7 @@ window.onload = function() {
       $('#friends').empty();
       friends.forEach(async (friend) => {
         await fetcher.load(friend);
-        const fullName = store.any(friend, FOAF('name'));
+        const fullName = store.any(friend, n('fn'));
         $('#friends').append(
           $('<li>').append(
             $('<a>').text(fullName && fullName.value || friend.value)
@@ -99,11 +108,23 @@ window.onload = function() {
       console.log("Updating name...");
       const webId = $('#profile').val();
       const person = solid.data[webId];
-      const fulln = await person['http://xmlns.com/foaf/0.1/name'];
+      const fulln = await person[n('fn').value];
+      console.log(fulln)
       // Make sure your user has localhost as trusted application
-      await person['http://xmlns.com/foaf/0.1/name'].set($('#full').val());
+      await person[n('fn').value].set($('#fullName-input').val());
       console.log("Name updated");
       loadProfile()
+  })
+
+  $('#updateRole').click(async function setNameAndNicknames() {
+    console.log("Updating role...");
+    const webId = $('#profile').val();
+    const person = solid.data[webId];
+    const role = await person[n('role').value];
+    // Make sure your user has localhost as trusted application
+    await person[n('role').value].set($('#role-input').val());
+    console.log("Role updated");
+    loadProfile()
   })
 
 }
