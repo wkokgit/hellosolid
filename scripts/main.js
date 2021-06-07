@@ -77,33 +77,6 @@ window.onload = function() {
     console.log("Friends loaded")
   }
 
-//   $('#updateName').click(async function setNameAndNicknames() {
-//     console.log("Updating...")
-//     const store = $rdf.graph();
-//     const fetcher = new $rdf.Fetcher(store, {});
-//     const person = $('#profile').val();
-//     const fullName = $('#full').val();
-//     await fetcher.load(person);
-//     const me = $rdf.sym(person);
-//     const updater = new $rdf.UpdateManager(store);
-    
-//     const updatePromise = new Promise((resolve) => {
-//       const deletions = store.statementsMatching(me, $rdf.sym('http://xmlns.com/foaf/0.1/name'), null, me.doc());
-//       const additions = $rdf.st(me, $rdf.sym('http://xmlns.com/foaf/0.1/name'), new $rdf.Literal(fullName), me.doc());
-//       updater.update(deletions, additions, resolve);
-//     });
-//     console.log("Sending update...")
-//     await updatePromise;
-//     console.log("Response received")
-
-//   // const updatePromise2 = new Promise((resolve) => {
-//   //   const deletions = store.statementsMatching(me, $rdf.sym('http://xmlns.com/foaf/0.1/nick'), null, me.doc());
-//   //   const additions = nicknames.map(nickname => st(me, $rdf.sym('http://xmlns.com/foaf/0.1/nick'), new $rdf.Literal(nickname), me.doc()));
-//   //   updater.update(deletions, additions, resolve);
-//   // });
-//   // await updatePromise;
-// })
-
   $('#updateName').click(async function setNameAndNicknames() {
       console.log("Updating name...");
       const webId = $('#profile').val();
