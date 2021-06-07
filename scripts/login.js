@@ -44,8 +44,7 @@ window.onload = function() {
     let logout = document.getElementById('logout')
     
     // login and logout buttons
-    const popupUri = 'https://wkokgit.github.io/helloworld/popup.html'
-    //const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html'
+    const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html'
     console.log(login)
 
     login.addEventListener('click', () => solid.auth.popupLogin({ popupUri }))
