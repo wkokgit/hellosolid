@@ -19,8 +19,8 @@
       Welcome to Solid!
       </h2>
 
-      Inrupt accounts don't work in this applicaiton, so it is advised to make an account at solid.community.
-      Don't forget to add "https://wkokgit.github.io" to your preferences, otherwise editing data doesn't work. 
+      Inrupt accounts don't work in this application, so it is advised to make an account at "solidcommunity.net".
+      Don't forget to add "https://wkokgit.github.io" to your trusted applications with Read, Write and Append access, otherwise editing data doesn't work. 
 
       <hr>
       <section class="section" id="welcome">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </section>
-      <section id="logout-section" style="display:none">
+      <section id="logout_section" style="display:none">
         <div class="columns">
           <div class="column">
             <div class="box">
@@ -60,8 +60,12 @@
               Role: <a id="role"></a>
               <hr>
               Friends: <a id="friends"></a>
+              <hr>
+              <button id="logout" class="button is-info">Log out</button>
             </div>
           </div>
+
+          <!----- UPDATE DATA ----->
           <div class="column">
             <div class="box">
               <h4 class="title is-4">
@@ -73,7 +77,6 @@
               </div>
               <button id="updateName" class="button is-info">Update</button>
             </div>
-          
           
             <div class="box">
               <h4 class="title is-4">
@@ -88,16 +91,6 @@
           </div>
         </div>
       </section>
-      <div class="section console-box">
-        <div class="box">
-          <h4 class="title is-4 has-text-info">
-          Console log (uncomment 3-8 main.js)
-          </h4>
-          <div id="error-log"></div>
-
-          <button id="logout" class="button is-info">Log out</button>
-        </div>
-      </div>
     </section>
   </body>
 </html>

@@ -2,14 +2,15 @@ window.onload = function() {
 
   const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
   const n = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
-
-  let logout = document.getElementById('logout-section')
+  let login = document.getElementById('login')
+  let logout_section = document.getElementById('logout_section')
+  let logout = document.getElementById('logout')
   let welcome = document.getElementById('welcome')
   let user = document.getElementById('user')
 
   function renderLogin(session) {
     let webId = session.webId
-    logout.style.display = ''             
+    logout_section.style.display = ''             
     welcome.style.display = 'none'             
     
     console.log(webId)
@@ -23,7 +24,7 @@ window.onload = function() {
           
   function renderLogout() {
 
-    logout.style.display = 'none'             
+    logout_section.style.display = 'none'             
     welcome.style.display = ''             
   }
       
@@ -40,8 +41,6 @@ window.onload = function() {
 
   // Log the user in and out on click        
   function addListeners() {
-    let login = document.getElementById('login')
-    let logout = document.getElementById('logout')
     
     // login and logout buttons
     const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html'
