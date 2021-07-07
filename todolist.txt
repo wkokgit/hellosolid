@@ -1,0 +1,6 @@
+- readme
+	- forked from @melvincarvalho
+	- add website where it is running
+	- explain graph vs tree structures
+	- add: "this project is created as part of a master thesis done by Wouter Kok" email:
+- comment everything

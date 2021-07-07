@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html class="has-background-light" style="height: 100%;"> 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Join Solid</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <title>Solid Hello World</title>
+    <link rel="stylesheet" href="styles/bulma.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png"/>
+
     <script src="scripts/solid-auth-client.bundle.js"></script>
     <script src="scripts/rdflib.min.js"></script>
     <script src="scripts/solid-query-ldflex.rdflib.js"></script>
     <script src="scripts/jquery.js"></script>
+
     <script type="module" src="scripts/login.js"></script>
   </head>
   <body>
     <section class="section">
       <h2 class="title is-2">
-      Welcome to Solid!
+      Welcome to Hello Solid!
       </h2>
-
-      Inrupt accounts don't work in this application, so it is advised to make an account at "solidcommunity.net".
-      Don't forget to add "https://wkokgit.github.io" to your trusted applications with Read, Write and Append access, otherwise editing data doesn't work. 
-
-      <hr>
-      <section class="section" id="welcome">
-        <div class="columns">
-          <div class="column">
-            <div class="box">
-              <h5 class="subtitle is-5">Login with your Solid Pod</h5>
-              <button id="login" class="button is-primary">
-              <span>Log in</span>
-              </button>
-            </div>
-          </div>
-          <div class="column">
-            <div class="box">
-              <h5 class="subtitle is-5">Create a Pod with one of the Pod Providers</h5>
-              <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button is-link">
-                <span>I Want a Solid Pod!</span>
-              </button></a>
-            </div>
-          </div>
+      This is Solid Client application to explain you the basics of Solid.
+      Inrupt accounts currently have authentication issues in this application, so it is advised to make an account at "solidcommunity.net".
+      <br>
+      You must add "https://wkokgit.github.io" to your trusted applications with Read, Write and Append access, otherwise editing and reading data doesn't work. 
+      <br><br>
+     
+      <section class="section" id="login_section">
+        
+        <div class="box">
+          <h5 class="subtitle is-5">Login with your Solid Pod</h5>
+          <button id="login" class="button is-primary">
+            <span>Log in</span>
+          </button>
         </div>
+      
+        <div class="box">
+          <h5 class="subtitle is-5">Create a Pod with one of the Pod Providers</h5>
+          <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button is-link">
+            <span>I Want a Solid Pod!</span>
+          </button></a>
+        </div>
+        
       </section>
       <section id="logout_section" style="display:none">
-        <div class="columns">
-          <div class="column">
+        
             <div class="box">
               <h4 class="title is-4">
               Profile information
               </h4>
               <hr>
-              Profile link: <a id="profile" target="_blank" href="#"></a>
+              Profile link: <a id="profile" target="_blank" href="#" style="font-size: 10pt;"></a>
               <hr>
               Name: <a id="fullName"></a>
               <hr>
@@ -60,13 +59,13 @@
               Role: <a id="role"></a>
               <hr>
               Friends: <a id="friends"></a>
-              <hr>
-              <button id="logout" class="button is-info">Log out</button>
+              <br>
+              <button id="logout" class="button is-primary">Log out</button>
             </div>
-          </div>
+         
 
           <!----- UPDATE DATA ----->
-          <div class="column">
+          
             <div class="box">
               <h4 class="title is-4">
               Update your name
@@ -88,9 +87,12 @@
               </div>
               <button id="updateRole" class="button is-info">Update</button>
             </div>
-          </div>
-        </div>
+         
+      
       </section>
     </section>
   </body>
+  <footer style="text-align: center;">
+    <a href="https://github.com/wkokgit/helloworld">Source and Documentation</a>
+  </footer>
 </html>

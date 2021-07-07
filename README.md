@@ -1,8 +1,9 @@
-# helloworld
+# Hello World Solid Application
 
-# hello world for Solid apps
+This repository is created to help starting developers get the grips of developing a Solid application. It is forked from [here](https://melvincarvalho.github.io/helloworld/) where Melvin Carvalho created a version which I extended upon.
 
-[Demo](https://melvincarvalho.github.io/helloworld/) | [Codepen](https://codepen.io/melvincarvalho/pen/ReVpEX?editors=1000)
+Here is a [Demo](https://wkokgit.github.io/helloworld/) of my Hello World application.
 
+It is adviced to run the application using the [http-server](https://www.npmjs.com/package/http-server) npm package.
 
-Run server with: npm run client
+Run ```http-server``` in terminal and go to the ip address in your browser to open the application. 
