@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100%; background-color: rgb(240, 240, 245)"> 
+<html> 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,45 +25,52 @@
       <h3 class="title is-3">
       Getting started!
       </h3>
-      This is a Solid Client application to explain you the basics of Solid. As there is a lot to explain, let me first show you some websites to find more information on Solid.
+      This is a Solid Client application to explain you the basics of Solid. As there is a lot to explain, let me first show you some websites to find more information on Solid. I would suggest looking at the "Other apps" section 
       <br><br>
       <div class="box">
-          <h5 class="subtitle is-5">Solid websites</h5>
-          <span><a href="https://solidproject.org/">Home</a>  </span> <br>
-          <span><a href="https://solidproject.org/developers/tools/">Developer Tools</a>  </span> <br>
-          <span><a href="https://solidproject.org/apps">Other apps</a>  </span> <br>
-          <span><a href="https://github.com/solid">Github</a>  </span> <br>
-          <span><a href="https://forum.solidproject.org/top/quarterly?order=activity">Forum</a>  </span> <br> 
-          <span><a href="https://www.reddit.com/r/SOLID/">Solid Reddit</a>  </span> <br>
-          <span><a href="https://gitter.im/solid/chat">Solid Gitter</a>  </span> <br>
-          <span><a href="https://www.w3.org/community/solid/">W3 Community Group</a>  </span> <br>
-          <span><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Wiki</a>  </span> <br>
-          <span><a href="https://vincenttunru.gitlab.io/tripledoc/docs/cheatsheet">Additional cheatsheet for retrieving POD data</a>  </span> <br>
-        </div>
+        <h5 class="subtitle is-5">Solid websites</h5>
+        <span><a href="https://solidproject.org/">Home</a>  </span> <br> 
+        <span><a href="https://solidproject.org/TR/protocol">Protocol Specification</a>  </span> <br>
+        <span><a href="https://solidproject.org/developers/tools/">Developer Tools</a>  </span> <br>
+        <span><a href="https://solidproject.org/apps">Other apps</a>  </span> <br>
+        <span><a href="https://github.com/solid">Github</a>  </span> <br>
+        <span><a href="https://forum.solidproject.org/top/quarterly?order=activity">Forum</a>  </span> <br> 
+        <span><a href="https://www.reddit.com/r/SOLID/">Solid Reddit</a>  </span> <br>
+        <span><a href="https://gitter.im/solid/chat">Solid Gitter</a>  </span> <br>
+        <span><a href="https://www.w3.org/community/solid/">W3 Community Group</a>  </span> <br>
+        <span><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Wiki</a>  </span> <br>
+        <span><a href="https://vincenttunru.gitlab.io/tripledoc/docs/cheatsheet">Additional cheatsheet for retrieving POD data</a>  </span> <br>
+      </div>
 
-      In my experience, everyone on the forum is friendly and willing to help so don't hesitate to ask questions.
-      Inrupt accounts currently have authentication issues in this application, so it is advised to make an account at "solidcommunity.net".
+      In short, Solid is a decentralized platform that tackles issues such as the misuse of personal data by letting users create their own personal online data-store (POD). Using a POD, users can store personal data and control who has access to their data. The platform is based on current W3 standards and protocols, using linked-data technologies, and not to forget created by Sir Tim Berners-Lee. 
+
+      Additionally, in my experience everyone on the forum is friendly and willing to help so don't hesitate to ask questions.
+    
       <br>
-      You must add "https://wkokgit.github.io" to your trusted applications with Read, Write and Append access, otherwise editing and reading data doesn't work. 
+      
       <br><br>
      
-      <section class="section" id="login_section">
+
+      <div class="box">
+        <h5 class="subtitle is-5">Create a Pod with one of the Pod Providers</h5>
+        <i>Inrupt accounts currently have authentication issues in this application, so it is advised to make an account at "solidcommunity.net".</i> <br><br>
+        <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button button-create-pod">
+          <span>Create a Solid Pod!</span>
+        </button></a>
+      </div>
+ 
         
-        <div class="box">
-          <h5 class="subtitle is-5">Login with your Solid Pod</h5>
-          <button id="login" class="button is-primary">
-            <span>Log in</span>
-          </button>
-        </div>
+      <div class="box">
+        <h5 class="subtitle is-5">Login with your Solid Pod</h5>
+        <i>If it doesn't ask for permission to use the data to your pod, you must add "https://wkokgit.github.io" to your trusted applications with Read, Write and Append access, otherwise editing and reading data doesn't work.</i> <br><br>
+        <button id="login" class="button is-primary">
+          <span>Log in</span>
+        </button>
+      </div>
       
-        <div class="box">
-          <h5 class="subtitle is-5">Create a Pod with one of the Pod Providers</h5>
-          <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button is-link">
-            <span>I Want a Solid Pod!</span>
-          </button></a>
-        </div>
         
-      </section>
+        
+      
       <section id="logout_section" style="display:none">
         
             <div class="box">
