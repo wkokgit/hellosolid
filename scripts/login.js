@@ -1,5 +1,6 @@
 window.onload = function() {
 
+  // Friend of a Friend
   const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
   const n = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
   let login = document.getElementById('login')
@@ -21,7 +22,6 @@ window.onload = function() {
   }
           
   function renderLogout() {
-
     logout_section.style.display = 'none'             
     login_section.style.display = ''             
   }
@@ -42,6 +42,8 @@ window.onload = function() {
     
     // login and logout buttons
     const popupUri = 'https://wkokgit.github.io/helloworld/popup.html'
+    // Use the Uri below when the error: "Mismatching redirect uri" is shown
+    //const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html'
     console.log(login)
 
     login.addEventListener('click', () => solid.auth.popupLogin({ popupUri }))
@@ -63,14 +65,10 @@ window.onload = function() {
     // Display their details
     const fullName = store.any($rdf.sym(person), n('fn'));
 
-    
-    const nickname = store.any($rdf.sym(person), FOAF('nick'));
-
     const role = store.any($rdf.sym(person), n('role'));
     
     // The mail is stored in the user ID as a value and starts with mailto:YOURMAIL
     const personId = store.any($rdf.sym(person), n('hasEmail'));
-
     const mail = store.any($rdf.sym(personId), n('value')).value.slice(7);
 
  
@@ -98,17 +96,17 @@ window.onload = function() {
     }
   }
 
-    $('#updateName').click(async function setNameAndNicknames() {
-      const webId = $('#profile').val();
-
-      const person = solid.data[webId];
-
-      const fulln = await person[n('fn').value];
-      // Make sure your user has localhost as trusted application
-      await person[n('fn').value].set($('#fullName-input').val());
-      loadProfile()
+  // Update the name of a user
+  $('#updateName').click(async function setNameAndNicknames() {
+    const webId = $('#profile').val();
+    const person = solid.data[webId];
+    const fulln = await person[n('fn').value];
+    // Make sure your user has localhost as trusted application
+    await person[n('fn').value].set($('#fullName-input').val());
+    loadProfile()
   })
 
+  // Update the role of a user
   $('#updateRole').click(async function setNameAndNicknames() {
     const webId = $('#profile').val();
     const person = solid.data[webId];

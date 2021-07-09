@@ -4,19 +4,19 @@ html {
 }
 
 a {
-	color: #044855;
+	color: #D94B58;
 }
 
 #profile {
 	font-size: 10pt;
 }
 
-#login {
+#login,#logout  {
 	background-color: #C0424E;
 	color:  white;
 }
 
-.button-create-pod {
+.button-create-pod, #updateName, #updateRole{
 	background-color: #044855;
 	color:  white;
 }
