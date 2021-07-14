@@ -13,7 +13,7 @@
     <script src="scripts/solid-query-ldflex.rdflib.js"></script>
     <script src="scripts/jquery.js"></script>
 
-    <script type="module" src="scripts/login.js"></script>
+    <script type="module" src="scripts/main.js"></script>
   </head>
   <body>
     <section class="logo">
@@ -21,11 +21,11 @@
       <p id="logotext" >A webpage that explains some of the basic functionalities of Solid! <br> Created by <a href="https://github.com/wkokgit">Wouter Kok</a></p>
     </section>
 
-    <section class="section">
+    <section class="section main-page">
       <h3 class="title is-3">
       Getting started!
       </h3>
-      This is a Solid Client application to explain you the basics of Solid. As there is a lot to explain, let me first show you some websites to find more information on Solid. I would suggest looking at the "Other apps" section 
+      This is a Solid Client application to explain you the basics of Solid and is build upon an existing application created by <a href="https://github.com/melvincarvalho/helloworld">Melvin Carvalho</a>. It is created as part of my master thesis. The goal of this application is to help developers interested in developing Solid applications. As there is a lot to explain, let me first show you some websites to find more information on Solid. The <i>Protocol Specification</i> is an in-depth explanation of the Solid Protocol where you can read more about e.g. authentication, storage, reading and writing resources and more. In the <i> Developer Tools </i> there is a big list of tools that can help developing for Solid. The last point was helpful towards creating this repository. It offers a list of examples on how to retrieve data. Most other sites speak for themselves.
       <br><br>
       <div class="box">
         <h4 class="subtitle is-4">Solid websites</h4>
@@ -39,13 +39,18 @@
         <span><a href="https://gitter.im/solid/chat">Gitter</a>  </span> <br>
         <span><a href="https://www.w3.org/community/solid/">W3 Community Group</a>  </span> <br>
         <span><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Wiki</a>  </span> <br>
-        <span><a href="https://vincenttunru.gitlab.io/tripledoc/docs/cheatsheet">Additional cheatsheet for retrieving POD data</a>  </span> <br>
+        <span><a href="https://vincenttunru.gitlab.io/tripledoc/docs/cheatsheet">Additional cheatsheet for retrieving POD data</a>  </span> 
+        <hr>
+        <h4 class="subtitle is4">Other helpful websites</h4>
+        <span><a href="https://linkeddata.github.io/rdflib.js/Documentation/webapp-intro.html">What is rdflib?</a>  </span> <br>
+        <span><a href="https://solid.github.io/query-ldflex/">LDFlex for Solid</a>  </span> <br>
+        <br>
       </div>
 
-      In short, Solid is a decentralized platform that tackles issues such as the misuse of personal data by letting users create their own personal online data-store (POD). Using a POD, users can store personal data and control who has access to their data. The platform is based on current W3 standards and protocols, using linked-data technologies, and not to forget created by Sir Tim Berners-Lee. 
+      In short, Solid is a decentralized platform that tackles issues such as the misuse of personal data by letting users create their own personal online data-store (POD). Using a POD, users can store personal data and control who has access to their data. The platform is based on current W3 standards and protocols, using linked-data technologies, and not to forget created by Sir Tim Berners-Lee. Additionally, in my experience everyone on the forum is friendly and willing to help so don't hesitate to ask questions.
+      <br><br>
+      The basic functionalities explained on this website are the login, retrieving data (Profile) and editing data (Username & Role). These functionalities will give you a starting point to further expand upon in your own application. 
 
-      Additionally, in my experience everyone on the forum is friendly and willing to help so don't hesitate to ask questions.
-    
       <br>
       
       <br><br>
@@ -53,16 +58,16 @@
       <div id="login_section">
         <div class="box">
           <h4 class="subtitle is-4">Create a Pod with one of the Pod Providers</h4>
-          <i>Inrupt accounts currently have authentication issues in this application, so it is advised to make an account at "solidcommunity.net".</i> <br><br>
+          The creation of a POD happens at a Pod provider that runs a Identity Profile Server (also Solid server). You could run a Solid server yourself as well, for examle the <a href="https://github.com/solid/node-solid-server">Node Solid Server</a>. After you have created a Pod, you will be able to log in here using the WebID that resolves to your profile document. <br> For more information on WebIDs and the Solid authentication and authorization process, go <a href="https://solid.github.io/authentication-panel/solid-oidc/#concepts-webids">here</a>.<br><br>
+          <i>Inrupt accounts currently have authentication issues in this application, so it is advised to test with an account at "solidcommunity.net".</i> <br><br>
           <a href="https://solid.inrupt.com/get-a-solid-pod" target="_blank"><button class="button button-create-pod">
             <span>Create a Solid Pod!</span>
           </button></a>
         </div>
-   
           
         <div class="box">
           <h4 class="subtitle is-4">Login with your Solid Pod</h4>
-          <i>If the data isn't shown, you must add "https://wkokgit.github.io" (or your local ip when running locally) to your trusted applications with Read, Write and Append access, otherwise editing and reading data doesn't work.</i> <br><br>
+          <i>Normally, the application would ask permission for using your data. If it skips that part, you should add "https://wkokgit.github.io" (or your local ip when running locally) to your trusted applications with Read, Write and Append access (your choice of course), otherwise editing and reading data doesn't work.</i> <br><br>
           <button id="login" class="button is-primary">
             <span>Log in</span>
           </button>
@@ -75,16 +80,19 @@
         
             <div class="box">
               <h4 class="subtitle is-4">
-              Profile information
+              Retrieving data: Profile
               </h4>
+              All data in your Solid POD is linked-data. Thus, the data is stored as a graph, which is something to get used to coming from other data structures. Therefore, it is advised to check <i>"What is rdflib?"</i> in helpful websites, especially when going through the code.
               <hr>
               Profile link: <a id="profile" target="_blank" href="#" style="font-size: 10pt;"></a>
               <hr>
-              Name: <a id="fullName"></a>
-              <hr>
-              Mail: <a id="mail"></a>
+              Name: <a id="fn"></a>
               <hr>
               Role: <a id="role"></a>
+              <hr>
+              Country: <a id="country-name"></a>
+              <hr>
+              Mail: <a id="mail"></a>
               <hr>
               Friends: <a id="friends"></a>
               <br>
@@ -96,24 +104,39 @@
           
             <div class="box">
               <h4 class="subtitle is-4">
-              Update your name
+              Updating data: Name & Role
               </h4>
+              When a session is created
+              <hr>
+              <h5 class="subtitle is-5">
+              Update your Name
+              </h5>
               <hr>
               <div class="block">
-                <input class="input" type="text" id="fullName-input" placeholder="Fullname"></input>
+                <input class="input" type="text" id="fn-input" placeholder="Fullname"></input>
               </div>
-              <button id="updateName" class="button is-info">Update</button>
-            </div>
-          
-            <div class="box">
-              <h4 class="subtitle is-4">
-              Update your role
-              </h4>
+              <button id="updateFullName" class="button updateButton">Update Name</button>
+              <hr>
+              <h5 class="subtitle is-5">
+              Update your Role
+              </h5>
               <hr>
               <div class="block">
                 <input class="input" type="text" id="role-input" placeholder="Role"></input>
               </div>
-              <button id="updateRole" class="button is-info">Update</button>
+              <button id="updateRole" class="button updateButton">Update Role</button>
+            </div>
+
+            <div class="box">
+              <h4 class="subtitle is-4">
+              Add / Update your country
+              </h4>
+              <hr>
+              This is a demonstration of adding new data to your POD. The country-name has not been set yet (except when another application has set it). To make sure it isn't set yet, go to your POD <i>profile/card#me</i>. Log-in, go to the 4th tab (XML source) and look for n:country-name. Then, type in your country-name below, and press update. Now the country-name should be added in your XML source. <br> <br>
+              <div class="block">
+                <input class="input" type="text" id="country-name-input" placeholder="Country"></input>
+              </div>
+              <button id="updateCountry" class="button updateButton">Add / Update</button>
             </div>
          
       

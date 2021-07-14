@@ -7,6 +7,12 @@ a {
 	color: #D94B58;
 }
 
+.main-page {
+	max-width:  1200px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 #profile {
 	font-size: 10pt;
 }
@@ -16,7 +22,7 @@ a {
 	color:  white;
 }
 
-.button-create-pod, #updateName, #updateRole{
+.button-create-pod, .updateButton {
 	background-color: #044855;
 	color:  white;
 }
