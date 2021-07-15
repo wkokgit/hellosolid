@@ -3,17 +3,16 @@
   However, it uses the ldflex library to query linked-data.
 */
 
-// Friend of a Friend
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
-const userData = false
 
 /*
   This function will load the profile box. 
   We use LDflex in this one.
 */
 async function loadProfile(WEB_ID) {
-  const userData = solid.data[WEB_ID];
+  window.WEB_ID = WEB_ID;
+  userData = solid.data[WEB_ID]; // IMPORTANT: userData can change when doing a PATCH so don't make it a global const
 
   $('#profile').text(WEB_ID);
   $('#profile').attr("href", WEB_ID);
@@ -22,18 +21,20 @@ async function loadProfile(WEB_ID) {
   addPropToProfile('role', userData);
   addPropToProfile('country-name', userData);
 
-  // The userId contains the email as a value, so we have to get it out of there.
-  const userId = await userData[VCARD('hasEmail').value];
-  const mailLink = await userId[VCARD('value').value];
+  // To get the email, we need to query hasEmail first,
+  // because in this value, the userId is stored. 
+  // This is used to get the email afterwards. (Check the XML Source of your POD's profile card for more information)  
+  let userId = await userData[VCARD('hasEmail').value];
+  let mailLink = await userId[VCARD('value').value];
 
   // it starts with "mailto:" so we get rid of that.
-  const mail = mailLink.value.slice(7);
+  let mail = mailLink.value.slice(7);
   $('#mail').text(mail);
 
-  // Display their friends 
+  // display your friends 
   $('#friends').empty(); // Otherwise it will save from earlier website visits
   for await (const friend of userData[FOAF('knows').value])
-    // "value" in this case is the WebId, you could also do "name"
+    // "value" in this case is your friends WebId, you could also do "name"
     $('#friends').append(
       $('<li>').append(
         $('<a>').text(friend.value)
@@ -41,7 +42,9 @@ async function loadProfile(WEB_ID) {
 }
 
 /*
-  
+  Retrieves a property from the profile document.
+  First we do a query to find the property value, for example a name of a person.
+  After that it is updated on the webpage using jQuery.
 */
 async function addPropToProfile(propertyName) {
   let propertyValue = await userData[VCARD(propertyName).value];
@@ -53,10 +56,11 @@ async function addPropToProfile(propertyName) {
   Updates the data using LDflex
 */
 async function updateData(propertyName) {
+  userData = solid.data[WEB_ID];
   // get the input value using jQuery
-  const input = $('#' + propertyName + '-input').val()
+  let input = $('#' + propertyName + '-input').val()
 
-  // Make sure your user has localhost as trusted application
+  // use .set() to set the correct value
   await userData[VCARD(propertyName).value].set(input);
 
   $('#' + propertyName).text(input);

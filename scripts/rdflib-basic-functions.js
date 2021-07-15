@@ -21,7 +21,6 @@ async function loadProfile(WEB_IDx) {
   window.me = store.sym(WEB_ID); // your profile
   window.profile = me.doc();
 
-  // The Fetcher is a 
   fetcher.load(me).then(response => {
     $('#profile').text(me.value);
     $('#profile').attr("href", me.value);
@@ -53,7 +52,7 @@ async function loadProfile(WEB_IDx) {
 }
 
 /*
-  Makes sure the properties are shown in the profile box. 
+  Retrieves a property from the profile document and then sets the values in the document.
   First we do a query to find the property value, for example a name of a person.
   After that it is updated on the webpage using jQuery.
 */
@@ -65,14 +64,20 @@ function addPropToProfile(propertyName) {
 
 /*
   Updates / adds a data property like name or role. 
-  The UpdateManager (at the top) is needed to 
+  The UpdateManager (at the top) is needed to be able to execute patches
+  For more info go to: http://linkeddata.github.io/rdflib.js/doc/classes/updatemanager.html#update
 */
 async function updateData(propertyName) {
   // get the input value using jQuery
   const input = $('#' + propertyName + '-input').val()
   let ins = $rdf.st(me, VCARD(propertyName), input, profile);
   let del = store.statementsMatching(me, VCARD(propertyName), null, me.doc());
-    
+
+  /*
+    To use the update function, we need to add parameters that
+    tell what needs to be deleted and inserted. 
+    You could for example have multiple values and only want to update one.
+  */
   await new Promise((resolve) => {
     updater.update(del, ins, resolve);
   });

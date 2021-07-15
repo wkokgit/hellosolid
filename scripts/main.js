@@ -1,12 +1,12 @@
 window.onload = function() {
-
+  // We will use this to display the sections
   let logout_section = document.getElementById('logout_section');
   let login_section = document.getElementById('login_section');
 
   /*
     Tracks the current user session and is being called at the bottom.
     First we check if a session currently exists, and if so 
-    the other section will be shown and the profile will be loaded.
+    a new section will be shown and the profile will be loaded.
   */
   function sessionTracker() {
     solid.auth.trackSession(session => {
@@ -23,8 +23,7 @@ window.onload = function() {
   }
 
   /*
-    Updates the name of a user. 
-    Check the extra added comments for more info.
+    Updates the name of a user.
   */
   $('#updateFullName').click(async function updateFullName() {
     updateData("fn");

@@ -29,7 +29,7 @@
     <h3 class="title is-3">
       Getting started!
     </h3>
-    This is a Solid Client application to explain you the basics of Solid and is build upon an existing application created by <a href="https://github.com/melvincarvalho/helloworld">Melvin Carvalho</a>. It is created as part of my master thesis. The goal of this application is to help developers interested in developing Solid applications. As there is a lot to explain, let me first show you some websites to find more information on Solid. The <i>Protocol Specification</i> is an in-depth explanation of the Solid Protocol where you can read more about e.g. authentication, storage, reading and writing resources and more. In the <i> Developer Tools </i> there is a big list of tools that can help developing for Solid. The last point was helpful towards creating this repository. It offers a list of examples on how to retrieve data. Most other sites speak for themselves.
+    This is a Solid Client application to explain you the basics of Solid and is build upon an existing application created by <a href="https://github.com/melvincarvalho/helloworld">Melvin Carvalho</a>. It is created as part of my master thesis. The goal of this application is to help developers interested in developing Solid applications. Both rdflib and ldflex are used for the basic functionalities, and you can switch between them by commenting the appropriate files in the <i>scripts</i> section. As there is a lot to explain, let me first show you some websites where you can find more information on Solid. The <i>Protocol Specification</i> is an in-depth explanation of the Solid Protocol where you can read more about e.g. authentication, storage, reading and writing resources and more. In the <i> Developer Tools </i> there is a big list of tools that can help developing for Solid. The cheatsheet and the websites on rdflib and ldflex were helpful towards creating the reading and writing functions. Most other sites speak for themselves.
     <br><br>
     <div class="box">
       <h4 class="subtitle is-4">Solid websites</h4>
@@ -46,6 +46,7 @@
       <span><a href="https://vincenttunru.gitlab.io/tripledoc/docs/cheatsheet">Additional cheatsheet for retrieving POD data</a>  </span> 
       <hr>
       <h4 class="subtitle is4">Other helpful websites</h4>
+      <span><a href="http://www.linkeddatatools.com/introducing-rdf">Understanding graph data-structures</a>  </span> <br>
       <span><a href="https://linkeddata.github.io/rdflib.js/Documentation/webapp-intro.html">What is rdflib?</a>  </span> <br>
       <span><a href="https://solid.github.io/query-ldflex/">LDFlex for Solid</a>  </span> <br>
       <br>
@@ -53,9 +54,9 @@
 
     In short, Solid is a decentralized platform that tackles issues such as the misuse of personal data by letting users create their own personal online data-store (POD). Using a POD, users can store personal data and control who has access to their data. The platform is based on current W3 standards and protocols, using linked-data technologies, and not to forget created by Sir Tim Berners-Lee. Additionally, in my experience everyone on the forum is friendly and willing to help so don't hesitate to ask questions.
     <br><br>
-    The basic functionalities explained on this website are the login, retrieving data (Profile) and editing data (Username & Role). These functionalities will give you a starting point to further expand upon in your own application. 
+    The basic functionalities explained on this website are the login, retrieving data (Profile), editing data (Username & Role), and adding new data (Country), for which I actually use the same function. These functionalities will give you a starting point to further expand upon in your own application.  
 
-    <br>
+    
 
     <br><br>
 
@@ -86,7 +87,7 @@
         <h4 class="subtitle is-4">
           Retrieving data: Profile
         </h4>
-        All data in your Solid POD is linked-data. Thus, the data is stored as a graph, which is something to get used to coming from other data structures. Therefore, it is advised to check <i>"What is rdflib?"</i> in helpful websites, especially when going through the code.
+        All data in your Solid POD is linked-data. The data is stored as a graph, which is something to get used to for developers attuned to other data structures. Therefore, it is advised to check <i>"Other helpful websites"</i> above. Your POD is a profile document in which we can query different properties, see the code for more information.
         <hr>
         Profile link: <a id="profile" target="_blank" href="#" style="font-size: 10pt;"></a>
         <hr>
@@ -108,7 +109,7 @@
         <h4 class="subtitle is-4">
           Updating data: Name & Role
         </h4>
-        When a session is created
+        Updating data is quite different in rdflib and LDFlex. However, both send a patch request over the web to edit the correct property. Check the code for more information.
         <hr>
         <h5 class="subtitle is-5">
           Update your Name
@@ -134,7 +135,7 @@
           Add / Update your country
         </h4>
         <hr>
-        This is a demonstration of adding new data to your POD. The country-name has not been set yet (except when another application has set it). To make sure it isn't set yet, go to your POD <i>profile/card#me</i>. Log-in, go to the 4th tab (XML source) and look for n:country-name. Then, type in your country-name below, and press update. Now the country-name should be added in your XML source. <br> <br>
+        This is a demonstration of adding new data to your POD. The country-name has not been set yet (except when another application has set it). To make sure it isn't set yet, go to your POD <i>profile/card#me</i>. Log-in, go to the 4th tab (XML source) and look for n:country-name. Then, type in your country-name below, and press update. Now the country-name should be added in your XML source. The updating and adding part both use the same function. <br> <br>
         <div class="block">
           <input class="input" type="text" id="country-name-input" placeholder="Country"></input>
         </div>
