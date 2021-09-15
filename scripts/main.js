@@ -50,7 +50,7 @@ window.onload = function() {
     further with the pod provider.
   */
   $('#login').click(async function login() {
-    //const popupUri = 'popup.html'
+    //const popupUri = 'https://wkokgit.github.io/hellosolid/popup.html'
     // Use the Uri below when the error: "Mismatching redirect uri" is shown
     const popupUri = 'https://melvincarvalho.github.io/helloworld/popup.html'
 
